@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -330,8 +332,51 @@
         </div>
     </section>
 
-    <footer class="py-10 border-t border-white/5 text-center text-[11px] text-gray-600 uppercase tracking-widest">
-        &copy; 2026 David Gitahi. Crafted with Tailwind.
+    <footer class="py-20 border-t border-white/10 bg-[#0c0c0c] relative z-10">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <a href="#"
+                        class="font-bebas text-2xl tracking-[0.2em] text-accent hover:text-accent-dark transition-colors">
+                        DAVID.G
+                    </a>
+                    <p class="text-[10px] uppercase tracking-[0.15em] text-gray-600">
+                        &copy; 2026 David Gitahi — All Rights Reserved.
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-center gap-4">
+
+                    <a href="https://linkedin.com/in/davidgitahi" target="_blank"
+                        class="w-12 h-12 flex items-center justify-center rounded-full border border-white/5 bg-[#141414] text-gray-500 hover:border-accent-dark hover:text-accent hover:-translate-y-1 transition-all duration-300">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+
+                    <a href="https://x.com/daveydavekenya" target="_blank"
+                        class="w-12 h-12 flex items-center justify-center rounded-full border border-white/5 bg-[#141414] text-gray-500 hover:border-accent-dark hover:text-accent hover:-translate-y-1 transition-all duration-300">
+                        <i class="fab fa-twitter text-lg"></i>
+                    </a>
+
+                    <a href="https://github.com/gitahidave" target="_blank"
+                        class="w-12 h-12 flex items-center justify-center rounded-full border border-white/5 bg-[#141414] text-gray-500 hover:border-accent-dark hover:text-accent hover:-translate-y-1 transition-all duration-300">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+
+                    <a href="https://gitlab.com/gitahidave" target="_blank"
+                        class="w-12 h-12 flex items-center justify-center rounded-full border border-white/5 bg-[#141414] text-gray-500 hover:border-accent-dark hover:text-accent hover:-translate-y-1 transition-all duration-300">
+                        <i class="fab fa-gitlab text-lg"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-white/[0.03] text-center">
+                <p class="font-serif-display italic text-gray-700 text-sm opacity-40">
+                    Building the future of the web, one commit at a time.
+                </p>
+            </div>
+        </div>
     </footer>
 
     <script>
