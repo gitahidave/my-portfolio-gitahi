@@ -1,171 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
     <title>David Gitahi | Portfolio</title>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-bebas: 'Bebas Neue', sans-serif;
+            --font-dm-sans: 'DM Sans', sans-serif;
+            --font-serif-display: 'DM Serif Display', serif;
+            --color-accent: #e8d5b0;
+            --color-accent-dark: #c9a96e;
+        }
+
+        /* The Grainy/Noise Overlay from the Sawad style */
+        .bg-noise::before {
+            content: '';
+            @apply fixed inset-0 z-0 pointer-events-none opacity-[0.04];
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .fade-up {
+            @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+        }
+        .fade-up.visible {
+            @apply opacity-100 translate-y-0;
+        }
+    </style>
 </head>
 
-<body>
-    <!-- Navigation Buttons -->
-    <nav class="bg-gray-800 text-white p-4">
-        <div class="max-w-4xl mx-auto flex justify-between">
-            <a href="#home" class="hover:text-blue-400 transition">Home</a>
-            <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-            <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
-            <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-            <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+<body class="bg-[#0c0c0c] text-[#f0ede6] font-dm-sans bg-noise">
+
+    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0c0c0c]/80 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-8 h-16">
+            <a href="#" class="font-bebas text-2xl tracking-widest text-accent">DAVID.G</a>
+            <div class="hidden md:flex space-x-10 text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+                <a href="#experience" class="hover:text-white transition">Experience</a>
+                <a href="#skills" class="hover:text-white transition">Skills</a>
+                <a href="#contact"
+                    class="px-4 py-2 border border-white/10 rounded-full hover:bg-white/5 hover:border-accent-dark transition">Hire
+                    Me</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Landing Section -->
-        <!-- About Me Card -->
-        <div class="max-w-4xl mx-auto p-6">
-            <img src="src/images/Dave.jpg" alt="David Gitahi" class="w-32 h-32 rounded-full mb-4">
-            <h1 class="text-2xl font-bold mb-4">David Gitahi</h1>
-            <h2 class="text-xl font-semibold mb-2">Full Stack Developer</h2>
-            <p class="text-gray-700 mb-4">A full stack developer with experience in building scalable web and mobile applications.</p>
-            <!-- Social Media Links -->
-            <div class="flex space-x-4">
-                <a href="https://twitter.com" target="_blank" class="hover:text-blue-400 transition">Twitter</a>
-                <a href="https://linkedin.com" target="_blank" class="hover:text-blue-400 transition">LinkedIn</a>
-                <a href="https://github.com" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
-            </div>
+    <section id="home" class="relative min-h-screen flex flex-col justify-end pt-20 overflow-hidden">
+        <div class="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+            <img src="src/images/Dave.jpg" alt="David"
+                class="w-full h-full object-cover opacity-20 grayscale transition duration-700 hover:grayscale-0"
+                style="mask-image: linear-gradient(to left, black 20%, transparent 100%);">
         </div>
-    <div>
-        <h1>SOFTWARE <br> ENGINEER</h1>
-        <p>Passionate about creating innovative solutions and building scalable applications.</p>
-        <div class="stat-grid">
-            <div class="stat-item">
-                <h3>3+</h3>
-                <p>YEARS OF EXPERIENCE</p>
-            </div>
-            <div class="stat-item">
-                <h3>15+</h3>
-                <p>PROJECTS COMPLETED</p>
-            </div>
-            <div class="stat-item">
-                <h3>10+</h3>
-                <p>GLOBAL CLIENTS</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Projects Section -->
-    <div>
-        <h1>PROJECTS</h1>
-        <div class="project-grid">
-            <div class="project-item">
-                <img src="https://via.placeholder.com/300x200" alt="Project 1">
-                <h3>Project One</h3>
-                <p>A web application built with React and Node.js.</p>
+        <div class="max-w-6xl mx-auto w-full px-8 pb-20 relative z-10">
+            <div class="flex items-center gap-3 text-accent-dark text-[11px] uppercase tracking-[0.2em] mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-dark animate-pulse"></span>
+                Available for work
             </div>
-            <div class="project-item">
-                <img src="https://via.placeholder.com/300x200" alt="Project 2">
-                <h3>Project Two</h3>
-                <p>A mobile app developed using Flutter.</p>
-            </div>
-            <div class="project-item">
-                <img src="https://via.placeholder.com/300x200" alt="Project 3">
-                <h3>Project Three</h3>
-                <p>A RESTful API created with Flask.</p>
+
+            <h1 class="font-bebas text-[clamp(60px,12vw,140px)] leading-[0.9] mb-8">
+                SOFTWARE <br> <span class="text-accent-dark">ENGINEER</span>
+            </h1>
+
+            <p class="max-w-md text-gray-400 text-lg leading-relaxed mb-12">
+                Passionate about creating scalable web solutions and building high-performance applications.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 border-t border-white/10 pt-10">
+                <div class="py-4 md:border-r border-white/10">
+                    <div class="font-bebas text-5xl text-accent">3+</div>
+                    <div class="text-[10px] uppercase tracking-widest text-gray-500">Years Experience</div>
+                </div>
+                <div class="py-4 md:px-10 md:border-r border-white/10">
+                    <div class="font-bebas text-5xl text-accent">15+</div>
+                    <div class="text-[10px] uppercase tracking-widest text-gray-500">Projects Done</div>
+                </div>
+                <div class="py-4 md:px-10">
+                    <div class="font-bebas text-5xl text-accent">10+</div>
+                    <div class="text-[10px] uppercase tracking-widest text-gray-500">Global Clients</div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Experience Section -->
-    <div>
-        <h1>3 YEARS OF <br> EXPERIENCE</h1>
-        <div class="experience-item">
-            <h3>Software Engineer at Tech Company</h3>
-            <p>June 2020 - Present</p>
-            <ul>
-                <li>Developed and maintained web applications using React and Node.js.</li>
-                <li>Collaborated with cross-functional teams to design and implement new features.</li>
-                <li>Optimized application performance and scalability.</li>
-            </ul>
-        </div>
-        <div class="experience-item">
-            <h3>Frontend Developer at Startup</h3>
-            <p>January 2018 - May 2020</p>
-            <ul>
-                <li>Built responsive user interfaces with Vue.js.</li>
-                <li>Worked closely with designers to create intuitive user experiences.</li>
-                <li>Implemented state management using Vuex.</li>
-            </ul>
-        </div>
-    </div>
+    <section id="projects" class="py-32 px-8 border-t border-white/10">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center gap-4 text-accent-dark text-[10px] uppercase tracking-[0.3em] mb-4">
+                PORTFOLIO <span class="h-[1px] w-10 bg-accent-dark/40"></span>
+            </div>
+            <h2 class="font-bebas text-6xl mb-16 fade-up">RECENT PROJECTS</h2>
 
-    <!-- Tools Section -->
-    <div>
-        <h1'>SKILL <br> SET</h1>
-        <div class="tool-grid">
-            <div class="tool-item">
-                <img src="src/images/React.jpg" alt="Tool 1">
-                <p>React</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952380_120.jpg" alt="Tool 2">
-                <p>Vue.js</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/React.jpg" alt="Tool 2">
-                <p>ReactNative</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952379_121.jpg" alt="Tool 2">
-                <p>Node.js</p>
-            </div>
-            <div>
-                <img src="src/images/5942964797898952381_120.jpg" alt="Tool 3">
-                <p>Flask</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952386_120.jpg" alt="Tool 3">
-                <p>Django</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952385_120.jpg" alt="Tool 4">
-                <p>PostgreSQL</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/mondo.jpg" alt="Tool 4">
-                <p>MongoDB</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952384_120.jpg" alt="Tool 4">
-                <p>Laravel</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952381_120.jpg" alt="Tool 4">
-                <p>Flutter</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952382_120.jpg" alt="Tool 4">
-                <p>AWS</p>
-            </div>
-            <div class="tool-item">
-                <img src="src/images/5942964797898952383_120.jpg" alt="Tool 4">
-                <p>Docker</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="fade-up group bg-[#141414] border border-white/5 rounded-2xl overflow-hidden hover:border-accent-dark/50 transition-all duration-500">
+                    <img src="https://via.placeholder.com/600x400"
+                        class="w-full aspect-[4/3] object-cover opacity-80 group-hover:opacity-100 transition"
+                        alt="Project">
+                    <div class="p-8">
+                        <h3 class="font-serif-display text-2xl mb-2">Project One</h3>
+                        <p class="text-[11px] uppercase tracking-widest text-gray-500">React • Node.js • SaaS</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Contact Section -->
-    <div>
-        <h1>LET'S WORK <br> TOGETHER</h1>
-        <!-- Contact Form -->
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="number" placeholder="Your Phone Number" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
+    <section id="skills" class="py-32 px-8 border-t border-white/10 bg-[#141414]/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center gap-4 text-accent-dark text-[10px] uppercase tracking-[0.3em] mb-4">
+                STACK <span class="h-[1px] w-10 bg-accent-dark/40"></span>
+            </div>
 
+            <h2 class="font-bebas text-6xl mb-16 fade-up">PREMIUM TOOLS</h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+
+                <div
+                    class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group">
+                    <img src="src/images/React.jpg" alt="React"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">React</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.05s;">
+                    <img src="src/images/5942964797898952380_120.jpg" alt="Vue.js"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Vue.js</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.1s;">
+                    <img src="src/images/React.jpg" alt="ReactNative"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Native</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.15s;">
+                    <img src="src/images/5942964797898952379_121.jpg" alt="Node.js"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Node.js</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.2s;">
+                    <img src="src/images/5942964797898952381_120.jpg" alt="Flask"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Flask</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.25s;">
+                    <img src="src/images/5942964797898952386_120.jpg" alt="Django"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Django</span>
+                </div>
+
+                <div
+                    class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group">
+                    <img src="src/images/5942964797898952385_120.jpg" alt="PostgreSQL"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Postgres</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.05s;">
+                    <img src="src/images/mondo.jpg" alt="MongoDB"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">MongoDB</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.1s;">
+                    <img src="src/images/5942964797898952384_120.jpg" alt="Laravel"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Laravel</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.15s;">
+                    <img src="src/images/5942964797898952381_120.jpg" alt="Flutter"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Flutter</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.2s;">
+                    <img src="src/images/5942964797898952382_120.jpg" alt="AWS"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">AWS
+                        Cloud</span>
+                </div>
+
+                <div class="fade-up flex flex-col items-center justify-center p-8 bg-[#141414] border border-white/5 rounded-2xl hover:border-accent-dark/50 hover:bg-white/[0.02] transition-all duration-300 group"
+                    style="transition-delay: 0.25s;">
+                    <img src="src/images/5942964797898952383_120.jpg" alt="Docker"
+                        class="w-12 h-12 mb-4 object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 group-hover:text-accent transition">Docker</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-8 border-t border-white/10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div class="fade-up">
+                <div class="text-accent-dark text-[10px] uppercase tracking-[0.3em] mb-4">CONTACT</div>
+                <h2 class="font-bebas text-7xl leading-none mb-6">LET'S WORK <br> TOGETHER</h2>
+                <p class="text-gray-400">Have a project in mind? Let's build something great.</p>
+            </div>
+
+            <form class="fade-up flex flex-col gap-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Name"
+                        class="bg-[#141414] border border-white/10 rounded-lg p-4 focus:border-accent-dark outline-none transition">
+                    <input type="email" placeholder="Email"
+                        class="bg-[#141414] border border-white/10 rounded-lg p-4 focus:border-accent-dark outline-none transition">
+                </div>
+                <textarea placeholder="Message" rows="5"
+                    class="bg-[#141414] border border-white/10 rounded-lg p-4 focus:border-accent-dark outline-none transition"></textarea>
+                <button type="submit"
+                    class="bg-accent text-black font-bold py-4 rounded-full hover:bg-accent-dark transition transform hover:-translate-y-1">Send
+                    Message →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-white/5 text-center text-[11px] text-gray-600 uppercase tracking-widest">
+        &copy; 2026 David Gitahi. Crafted with Tailwind.
+    </footer>
+
+    <script>
+        // Intersection Observer for the "Fade Up" Effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
