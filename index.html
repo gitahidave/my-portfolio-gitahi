@@ -316,18 +316,19 @@
                 <p class="text-gray-400">Have a project in mind? Let's build something great.</p>
             </div>
 
-            <form class="fade-up flex flex-col gap-4">
+            <form class="fade-up flex flex-col gap-4" id="contactForm" action="mailto:hello@yourdomain.com" method="POST" enctype="text/plain" target="_blank">
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Name"
+                    <input type="text" name="name" placeholder="Name" required
                         class="bg-[#141414] border border-white/10 rounded-lg p-4 focus:border-accent-dark outline-none transition">
-                    <input type="email" placeholder="Email"
+                    <input type="email" name="email" placeholder="Email" required
                         class="bg-[#141414] border border-white/10 rounded-lg p-4 focus:border-accent-dark outline-none transition">
                 </div>
-                <textarea placeholder="Message" rows="5"
+                <textarea name="message" placeholder="Message" rows="5" required
                     class="bg-[#141414] border border-white/10 rounded-lg p-4 focus:border-accent-dark outline-none transition"></textarea>
                 <button type="submit"
                     class="bg-accent text-black font-bold py-4 rounded-full hover:bg-accent-dark transition transform hover:-translate-y-1">Send
                     Message →</button>
+                <div id="formMessage" class="text-center text-sm hidden"></div>
             </form>
         </div>
     </section>
@@ -390,6 +391,75 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Contact message feedback for mailto fallback
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', () => {
+                formMessage.classList.remove('hidden');
+                formMessage.classList.remove('text-red-400');
+                formMessage.classList.add('text-green-400');
+                formMessage.textContent = 'Your email client should open now. If it doesn\'t, use a direct mail address.';
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 4000);
+            });
+        }
+    </script>
+</body>
+
+</html>
+    <script>
+        // Initialize EmailJS
+        emailjs.init("YOUR_PUBLIC_KEY_HERE");
+
+        // Intersection Observer for the "Fade Up" Effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                try {
+                    const response = await emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', contactForm);
+                    
+                    formMessage.classList.remove('hidden', 'text-red-400');
+                    formMessage.classList.add('text-green-400');
+                    formMessage.textContent = 'Message sent successfully!';
+                    contactForm.reset();
+                    
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                    }, 3000);
+                } catch (error) {
+                    formMessage.classList.remove('hidden', 'text-green-400');
+                    formMessage.classList.add('text-red-400');
+                    formMessage.textContent = 'Failed to send message. Please try again.';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
+        }
     </script>
 </body>
 
